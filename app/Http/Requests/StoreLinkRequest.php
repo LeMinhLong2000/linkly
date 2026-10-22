@@ -12,7 +12,7 @@ class StoreLinkRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,12 @@ class StoreLinkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'url' => [
+                'required',
+                'string',
+                'url:http,https',
+                'max:2048',
+            ],
         ];
     }
 }
